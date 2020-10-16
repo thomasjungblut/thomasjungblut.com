@@ -1,17 +1,40 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Coding with Thomas`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Thomas Jungblut`,
+      summary: `I'm Thomas Jungblut - welcome to my personal blog. Here you'll find a lot of posts around all the things I'm interested in writing about. 
+                Big Data, Bulk Synchronous Parallel, MapReduce, Machine Learning, Clustering, Graph Theory, Natural Language Processing, Computer Science and Open Source in general.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: ``,
+    siteUrl: `https://thomasjungblut.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `tjungblut`,
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-pinterest-twitter-facebook`,
+      options: {
+        delayTimer: 100,
+        twitter: {
+          enable: true, 
+          containerSelector: `.twitter-container`,
+          handle: `tjungblut`,
+          showFollowButton: true,
+          showTimeline: false,
+          showFollowerCount: false,
+          timelineTweetCount: 1,
+          width: null, 
+          height: null,
+          noHeader: true, 
+          noFooter: true, 
+          noBorders: true, 
+          noScrollbar: true,
+          transparent: true 
+        }
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -66,7 +89,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/favicon-256x256.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
