@@ -1,6 +1,7 @@
 name: AnnounceBlogPost
 on:
-  page_build
+  # page_build
+  workflow_dispatch
     
 jobs:	
   tweet:	
@@ -14,9 +15,15 @@ jobs:
       - name: diff output
         id: diff
         shell: bash
-        run: echo "::set-output name=blog_post_url::$(git diff --name-only HEAD^..HEAD | grep ^content/blog | head -n 1 | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
+        run: |
+          file=$(git diff --name-only HEAD^..HEAD | grep ^content/blog | head -n 1)
+          echo "::set-output name=blog_post_url::$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
+          echo "::set-output name=blog_post_name::$(cat ${file} | cat $a | grep title: | sed -n \"s/^.*'\(.*\)'.*$/\1/ p\")"
       - name: test
-        run: echo "${{ steps.diff.outputs.blog_post_url }}"
+        run: |
+          echo "${{ steps.diff.outputs.blog_post_url }}"
+          echo "${{ steps.diff.outputs.blog_post_name }}"
+        
 #      - uses: thomasjungblut/twitter-action@v3
 #        with:	
 #          message: "tweeting from ${{ github.event.inputs.name }}"
