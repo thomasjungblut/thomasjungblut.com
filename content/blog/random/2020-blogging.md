@@ -5,7 +5,7 @@ draft: false
 tags : [random, gatsbyjs]
 ---
 
-Exactly four years (!) after my last post, I finally have found some motivation to bring my blog alive again.
+Exactly four years (!) after my last post, I finally have found some motivation to bring my blog alive again. 
 
 Of course, this comes with a for 2020 typical JavaScript single page app with React and [GatsbyJS](https://www.gatsbyjs.com/) - apologies in advance, I wanted to try an alternative to AngularJS and I'm sure I will also regret this myself in two to three years time. 
 
