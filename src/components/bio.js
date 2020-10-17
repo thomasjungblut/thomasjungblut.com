@@ -14,7 +14,7 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(maxWidth: 200, maxHeight: 200, quality: 100) {
             ...GatsbyImageSharpFluid
             ...GatsbyImageSharpFluidLimitPresentationSize
           }
@@ -42,7 +42,7 @@ const Bio = () => {
     <div className="bio">
       {avatar && (
         <Image
-          fixed={avatar}
+          fluid={avatar}
           alt={author?.name || ``}
           className="bio-avatar"
           imgStyle={{
@@ -51,13 +51,11 @@ const Bio = () => {
         />
       )}
       {author?.name && (
-        <div>
+        <div className="bio-summary">
           <p>
             {author?.summary || null}
           </p>
-          <p>
-            <div className="twitter-container"></div>
-          </p>
+          <div className="twitter-container"></div>
         </div>
       )}
     </div>

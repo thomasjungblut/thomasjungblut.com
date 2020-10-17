@@ -6,7 +6,7 @@ aliases: [ "/2011/08/ant-colony-optimization-for-tsp.html" ]
 tags : [ant colony optimization, ACO, java]
 ---
 
-Code can be found under ([https://github.com/thomasjungblut/antcolonyopt](https://github.com/thomasjungblut/antcolonyopt))  
+Code can be found on ([Github](https://github.com/thomasjungblut/antcolonyopt))  
   
 Hi there,  
   

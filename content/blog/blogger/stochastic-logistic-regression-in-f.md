@@ -1,5 +1,5 @@
 ---
-title: 'Stochastic Logistic Regression in F'
+title: 'Stochastic Logistic Regression in F#'
 date: 2014-05-31T16:03:00.000+02:00
 draft: false
 aliases: [ "/2014/05/stochastic-logistic-regression-in-f.html" ]

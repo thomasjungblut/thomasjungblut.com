@@ -243,11 +243,7 @@ a:focus {
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
-}
-
-.global-wrapper[data-is-root-path="true"] .bio {
-  margin-bottom: var(--spacing-20);
+  padding: var(--spacing-10);  
 }
 
 .global-header {
@@ -288,18 +284,24 @@ a:focus {
 
 .bio {
   display: flex;
-  margin-bottom: var(--spacing-16);
+  flex-flow: row wrap;
+  margin-bottom: var(--spacing-4);
 }
 
-.bio p {
-  margin-bottom: var(--spacing-0);
+.bio-summary {
+  order: 2;
+}
+
+.bio-summary p {
+  margin-bottom: var(--spacing-4);
 }
 
 .bio-avatar {
-  margin-right: var(--spacing-4);
-  margin-bottom: var(--spacing-0);
-  min-width: 18%;  
+  order: 1;
+  margin-right: var(--spacing-4);  
+  margin-bottom: var(--spacing-4);  
   border-radius: 100%;
+  min-width: 18%;
 }
 
 .blog-post header h1 {
