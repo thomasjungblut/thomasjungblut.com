@@ -1,6 +1,6 @@
 name: AnnounceBlogPost
 on:
-  # page_build
+  #page_build
   workflow_dispatch
     
 jobs:	
@@ -12,13 +12,16 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: main
+          fetch-depth: 0
       - name: diff output
         id: diff
         shell: bash
         run: |
-          file=$(git diff --name-only HEAD^..HEAD | grep ^content/blog | head -n 1)
-          echo "::set-output name=blog_post_url::$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
-          echo "::set-output name=blog_post_name::$(cat ${file} | cat $a | grep title: | sed -n \"s/^.*'\(.*\)'.*$/\1/ p\")"
+          file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep ^content/blog | head -n 1)
+          url=$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
+          echo "::set-output name=blog_post_url::${url}"
+          name=$(cat ${file} | cat $a | grep title: | sed -n \"s/^.*'\(.*\)'.*$/\1/ p\")
+          echo "::set-output name=blog_post_name::${name}"
       - name: test
         run: |
           echo "${{ steps.diff.outputs.blog_post_url }}"
