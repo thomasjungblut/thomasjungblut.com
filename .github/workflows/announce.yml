@@ -1,0 +1,26 @@
+name: AnnounceBlogPost
+on:
+  page_build
+    
+jobs:	
+  tweet:	
+    runs-on: ubuntu-latest
+    steps:
+      # this is best effort timing-wise, I assume that there won't be anything pushed to main while the page was building
+      # ideally this should fetch the triggered commit from the gatsby context commit sha in the commit message and just pull from the respective ref directly
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: diff output
+        id: diff
+        shell: bash
+        run: echo "::set-output name=blog_post_url::$(git diff --name-only HEAD^..HEAD | grep ^content/blog | head -n 1 | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
+      - name: test
+        run: echo "${{ steps.diff.outputs.blog_post_url }}"
+#      - uses: thomasjungblut/twitter-action@v3
+#        with:	
+#          message: "tweeting from ${{ github.event.inputs.name }}"
+#          TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}	
+#          TWITTER_APP_SECRET: ${{ secrets.TWITTER_APP_SECRET }}	
+#          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}	
+#          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }} 
