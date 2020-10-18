@@ -262,7 +262,7 @@ public MinCutResult constructMinCutResult(Graph originalGraph,
     return new MinCut(first, second, cuttingEdges, cutWeight);
 }
 
-```
+``` 
 
 It works in two steps:
 
