@@ -16,17 +16,24 @@ jobs:
       - name: diff output
         id: diff
         shell: bash
+        # after finding which blog post changed, we're finding the url on where it is going to become available and its title
         run: |
           file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep ^content/blog | head -n 1)
           url=$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
           echo "::set-output name=blog_post_url::${url}"
           name=$(cat ${file} | cat $a | grep 'title:' | sed -n "s/^.*'\(.*\)'.*$/\1/ p")
           echo "::set-output name=blog_post_name::${name}"
-      - name: test
+      - name: print variables
         run: |
           echo "${{ steps.diff.outputs.blog_post_url }}"
           echo "${{ steps.diff.outputs.blog_post_name }}"
-        
+      - name: check if the post is really already available under this url, wait for 5 minutes if not
+        uses: nev7n/wait_for_response@v1
+        with:
+          url: "${{ steps.diff.outputs.blog_post_url }}"
+          responseCode: 200
+          timeout: 600
+          interval: 500
 #      - uses: thomasjungblut/twitter-action@v3
 #        if: ${{ url not empty() }}
 #        with:	
