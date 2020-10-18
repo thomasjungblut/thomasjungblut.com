@@ -20,7 +20,7 @@ jobs:
           file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep ^content/blog | head -n 1)
           url=$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
           echo "::set-output name=blog_post_url::${url}"
-          name=$(cat ${file} | cat $a | grep title: | sed -n \"s/^.*'\(.*\)'.*$/\1/ p\")
+          name=$(cat ${file} | cat $a | grep 'title:' | sed -n "s/^.*'\(.*\)'.*$/\1/ p")
           echo "::set-output name=blog_post_name::${name}"
       - name: test
         run: |
@@ -28,6 +28,7 @@ jobs:
           echo "${{ steps.diff.outputs.blog_post_name }}"
         
 #      - uses: thomasjungblut/twitter-action@v3
+#        if: ${{ url not empty() }}
 #        with:	
 #          message: "tweeting from ${{ github.event.inputs.name }}"
 #          TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}	
