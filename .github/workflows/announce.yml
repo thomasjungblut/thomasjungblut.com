@@ -1,7 +1,6 @@
 name: AnnounceBlogPost
 on:
-  #page_build
-  workflow_dispatch
+  page_build
     
 jobs:	
   tweet:	
