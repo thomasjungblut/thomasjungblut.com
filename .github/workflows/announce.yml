@@ -38,7 +38,7 @@ jobs:
           timeout: 600
           interval: 500
       - uses: thomasjungblut/twitter-action@v3
-        if: ${{ steps.diff.outputs.blog_post_url != "" && steps.diff.outputs.blog_post_name != "" }}
+        if: ${{ (steps.diff.outputs.blog_post_url) && (steps.diff.outputs.blog_post_name) }}
         with:	
           message: "Just published '${{ steps.diff.outputs.blog_post_name }}'! ${{ steps.diff.outputs.blog_post_url }} #thomasjungblut"
           TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}	
