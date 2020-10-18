@@ -8,15 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # this is best effort timing-wise, I assume that there won't be anything pushed to main while the page was building
-      # ideally this should fetch the triggered commit from the gatsby context commit sha in the commit message and just pull from the respective ref directly
+      # TODO(thomas): ideally this should fetch the triggered commit from the gatsby context commit sha in  
+      # the commit message and just pull from the respective ref directly
       - uses: actions/checkout@v2
         with:
           ref: main
           fetch-depth: 0
-      - name: diff output
+      - name: find url and title of the blog post
         id: diff
         shell: bash
         # after finding which blog post changed, we're finding the url on where it is going to become available and its title
+        # TODO(thomas): this currently triggers on all modifications and then just picks the first
+        # TODO(thomas): blog post tags should eventually become hashtags
         run: |
           file=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep ^content/blog | head -n 1)
           url=$(echo ${file} | sed 's+content/blog+https://blog.thomasjungblut.com+g' | sed 's/.md//g')
@@ -34,11 +37,11 @@ jobs:
           responseCode: 200
           timeout: 600
           interval: 500
-#      - uses: thomasjungblut/twitter-action@v3
-#        if: ${{ url not empty() }}
-#        with:	
-#          message: "tweeting from ${{ github.event.inputs.name }}"
-#          TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}	
-#          TWITTER_APP_SECRET: ${{ secrets.TWITTER_APP_SECRET }}	
-#          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}	
-#          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }} 
+      - uses: thomasjungblut/twitter-action@v3
+        if: ${{ steps.diff.outputs.blog_post_url != "" && steps.diff.outputs.blog_post_name != "" }}
+        with:	
+          message: "Just published '${{ steps.diff.outputs.blog_post_name }}'! ${{ steps.diff.outputs.blog_post_url }} #thomasjungblut"
+          TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}	
+          TWITTER_APP_SECRET: ${{ secrets.TWITTER_APP_SECRET }}	
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}	
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }} 
