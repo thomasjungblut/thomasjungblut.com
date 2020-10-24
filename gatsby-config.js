@@ -7,7 +7,7 @@ module.exports = {
                 Big Data, Bulk Synchronous Parallel, MapReduce, Machine Learning, Clustering, Graph Theory, Natural Language Processing, Computer Science and Open Source in general.`,
     },
     description: ``,
-    siteUrl: `https://thomasjungblut.com/`,
+    siteUrl: `https://blog.thomasjungblut.com/`,
     social: {
       twitter: `tjungblut`,
     },
@@ -71,7 +71,7 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
+    `gatsby-transformer-sharp`,    
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -92,7 +92,16 @@ module.exports = {
         icon: `content/assets/favicon-256x256.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-QJH7BQ90JF",
+        head: false,
+        defer: true,
+      }
+    },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
