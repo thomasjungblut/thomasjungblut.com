@@ -27,11 +27,9 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
+  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
@@ -243,7 +241,7 @@ a:focus {
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10);  
+  padding: var(--spacing-10);
 }
 
 .global-header {
@@ -298,8 +296,8 @@ a:focus {
 
 .bio-avatar {
   order: 1;
-  margin-right: var(--spacing-4);  
-  margin-bottom: var(--spacing-4);  
+  margin-right: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
   border-radius: 100%;
   min-width: 18%;
 }
@@ -315,6 +313,25 @@ a:focus {
 
 .blog-post-nav ul {
   margin: var(--spacing-0);
+}
+
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-0);
+}
+
+.pagination .active {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: overline;
+}
+
+.pagination .inactive {
+  text-decoration: none;
 }
 
 .gatsby-highlight {
