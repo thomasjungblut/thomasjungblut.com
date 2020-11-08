@@ -9,6 +9,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const readTimeMinutes = data.markdownRemark.timeToRead
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -23,7 +24,12 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <div>
+            <p>{post.frontmatter.date}
+              <span class="gr">·</span>
+              {readTimeMinutes} min read
+            </p>
+          </div>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -86,6 +92,8 @@ export const pageQuery = graphql`
         date(formatString: "Do MMMM YYYY")
         description
       }
+      tableOfContents
+      timeToRead
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
       fields {

@@ -302,6 +302,10 @@ a:focus {
   min-width: 18%;
 }
 
+.gr {
+  margin: 0 7px;
+}
+
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
 }
