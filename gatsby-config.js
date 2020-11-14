@@ -18,20 +18,20 @@ module.exports = {
       options: {
         delayTimer: 100,
         twitter: {
-          enable: true, 
+          enable: true,
           containerSelector: `.twitter-container`,
           handle: `tjungblut`,
           showFollowButton: true,
           showTimeline: false,
           showFollowerCount: false,
           timelineTweetCount: 1,
-          width: null, 
+          width: null,
           height: null,
-          noHeader: true, 
-          noFooter: true, 
-          noBorders: true, 
+          noHeader: true,
+          noFooter: true,
+          noBorders: true,
           noScrollbar: true,
-          transparent: true 
+          transparent: true
         }
       }
     },
@@ -48,7 +48,7 @@ module.exports = {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
-    },
+    },    
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -65,13 +65,24 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              fromHeading: 1,
+              toHeading: 6,
+              className: "table-of-contents"
+            },
+          },
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
       },
     },
-    `gatsby-transformer-sharp`,    
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
     {

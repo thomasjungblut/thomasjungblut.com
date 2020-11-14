@@ -26,7 +26,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <div>
             <p>{post.frontmatter.date}
-              <span class="gr">·</span>
+              <span className="gr">·</span>
               {readTimeMinutes} min read
             </p>
           </div>

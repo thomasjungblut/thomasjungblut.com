@@ -342,6 +342,113 @@ a:focus {
   margin-bottom: var(--spacing-8);
 }
 
+/* TOC */
+
+.table-of-contents {
+  font-family: Playfair Display, old-standard, Times New Roman;
+  line-height: 1.375;
+  background-color: rgba(248, 248, 248, 0.712);
+  color: #333;
+  box-sizing: border-box;
+  padding: 1rem 2rem 1rem 1rem;
+  max-width: 35rem;
+  margin-right: auto;
+}
+
+.table-of-contents ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.table-of-contents > ul > li:first-child {
+  margin-top: 10px;
+}
+
+.table-of-contents li {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.table-of-contents li li {
+  padding-left: 1.125rem;
+  font-size: 1.125rem;
+}
+
+.table-of-contents li li li {
+  font-size: 0.875rem;
+  margin-left: 1rem;
+}
+
+.table-of-contents .prefix {
+  display: block;
+  font-size: 80%;
+  opacity: 0.5;
+}
+
+.table-of-contents a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.table-of-contents a:hover,
+.table-of-contents a.active {
+  color: black;
+  text-decoration: underline;
+}
+
+.table-of-contents a.h1,
+.table-of-contents a.h2,
+.table-of-contents a.h3,
+.table-of-contents a.h4 {
+  color: #b35e54;
+}
+
+.table-of-contents a.h1 {
+  font-weight: 900;
+}
+
+.table-of-contents a.h2,
+.table-of-contents a.h3 {
+  font-weight: bold;
+}
+
+.table-of-contents a.h4 {
+  font-weight: inherit;
+}
+
+.table-of-contents a.h5 {
+  font-weight: bold;
+}
+
+.table-of-contents a.h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-size: 85%;
+}
+
+.table-of-contents a.h6[data-prefix]:before {
+  font-size: 90%;
+  letter-spacing: 0;
+}
+
+.table-of-contents a[data-prefix]:before {
+  content: attr(data-prefix);
+  font-size: 75%;
+  font-weight: normal;
+  display: block;
+  line-height: 1.25;
+  text-transform: none !important;
+}
+
+.table-of-contents .outline-description {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  font-family: old-standard, Times New Roman;
+}
+
 /* Media queries */
 
 @media (max-width: 42rem) {
