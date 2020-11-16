@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-pinterest-twitter-facebook`,
       options: {
-        delayTimer: 100,
+        delayTimer: 1000,
         twitter: {
           enable: true,
           containerSelector: `.twitter-container`,
