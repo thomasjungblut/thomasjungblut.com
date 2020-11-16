@@ -21,7 +21,7 @@ You need only two things:
 
 ## Overview
 
-Effectively it's a three step process:
+Effectively it's a four step process:
 
 1. add a new admin token to the instance (can be skipped if already exists)
 2. adding the service account and cluster role bindings to the K8s cluster
