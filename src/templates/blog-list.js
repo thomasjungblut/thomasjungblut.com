@@ -33,7 +33,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
         <ol style={{ listStyle: `none` }}>
           {posts.map(post => {
             const title = post.frontmatter.title || post.fields.slug
-
+            const readTimeMinutes = post.timeToRead
             return (
               <li key={post.fields.slug}>
                 <article
@@ -47,7 +47,9 @@ const BlogIndex = ({ data, location, pageContext }) => {
                         <span itemProp="headline">{title}</span>
                       </Link>
                     </h2>
-                    <small>{post.frontmatter.date}</small>
+                    <div>
+                      <p>{post.frontmatter.date}<span className="gr">·</span> {readTimeMinutes} min read</p>
+                    </div>
                   </header>
                   <section>
                     <p
@@ -112,13 +114,14 @@ export const pageQuery = graphql`
       nodes {
         excerpt(pruneLength: 250)
         fields {
-          slug
+          slug          
         }
         frontmatter {
           date(formatString: "Do MMMM YYYY")
           title
           description
         }
+        timeToRead
       }
     }
   }
