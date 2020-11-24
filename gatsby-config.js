@@ -97,14 +97,6 @@ module.exports = {
         icon: `content/assets/favicon-256x256.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "G-QJH7BQ90JF",
-        head: false,
-        defer: true,
-      }
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality

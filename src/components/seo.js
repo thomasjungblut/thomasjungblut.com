@@ -71,7 +71,15 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJH7BQ90JF"></script>
+      <script>{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QJH7BQ90JF');
+      `}</script>
+    </Helmet>
   )
 }
 
