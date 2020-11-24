@@ -18,7 +18,7 @@ exclude: Table of Contents
 
 I was playing a game and suddenly out of nowhere: 
 * Black Screen
-* GPU fan get pretty loud (100% Fan Speed)
+* GPU fan gets pretty loud (100% Fan Speed)
 * Game continues in the background, evident by control input being honored and continued sound output
 * Screen turns off for lost signal after some time and does not come back
 
@@ -76,10 +76,8 @@ Ultimately, if another card works as a replacement then you at least know that t
 ### Drivers
 
 Especially when you have just recently installed a new version, the Nvidia driver is a hot candidate for causing such issues.
-
-What would we see if the driver crashes though?
-
-Normally this manifests itself as DVM crashing:
+What would we see if the driver crashes though?  
+Normally this manifests itself as dwm.exe (Desktop Window Manager) crashing:
 
 ![dvm.exe crash](assets/dvm_2ITgK.png)
 
