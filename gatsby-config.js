@@ -72,6 +72,7 @@ module.exports = {
               tight: false,
               fromHeading: 1,
               toHeading: 6,
+              ordered: true,
               className: "table-of-contents"
             },
           },
