@@ -23,7 +23,9 @@ Effectively this issue also goes away by constantly cleaning the base and so mak
 
 ![home base fixed](assets/braava_fixed.jpg)
 
-**Yes, toilet paper and transparent tape**. It's simple: take a sheet of toilet paper, tear it in half, fold it and put tape over it.
+Yes, toilet paper and transparent tape. It's simple: take a sheet of toilet paper, tear it in half, fold it and put tape over it.
+
+Alternatively use a bit of cardboard, anything that keeps the hole level will work. Depending on the toilet paper you have at hand, this might also dent over time and you'll have the same issue once again.
 
 It's fine when it actually creates a little bump, Braava will drive over it and still charge just fine:
 
