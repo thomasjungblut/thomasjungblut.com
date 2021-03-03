@@ -48,7 +48,7 @@ module.exports = {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
-    },    
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -83,8 +83,14 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 100
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,

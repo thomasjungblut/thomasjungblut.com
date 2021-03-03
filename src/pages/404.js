@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,11 +8,9 @@ import SEO from "../components/seo"
 const NotFoundPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query FourOhFourQuery {
-      img: file(absolutePath: { regex: "/i-find-your-lack-of-navigation-disturbing.jpg/" }) {
+      img: file(relativePath: {eq: "i-find-your-lack-of-navigation-disturbing.jpg"}) {
         childImageSharp {
-          fluid(maxWidth: 864, maxHeight: 768) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
       site {
@@ -31,7 +29,7 @@ const NotFoundPage = ({ location }) => {
       <h1>404: Not Found</h1>
       <p>
         {(
-          <Image fluid={data.img.childImageSharp.fluid} alt="" />
+          <GatsbyImage image={data.img.childImageSharp.gatsbyImageData} />
         )}
       </p>
     </Layout>
