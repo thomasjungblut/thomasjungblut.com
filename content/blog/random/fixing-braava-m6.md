@@ -31,6 +31,8 @@ It's fine when it actually creates a little bump, Braava will drive over it and 
 
 ![going home](assets/braava_home.gif)
 
+Update: You might also want to checkout my new post on [modding the Braava tyres for even better grip](https://blog.thomasjungblut.com/random/fixing-braava-m6-wheel-mod/).
+
 Hope it helps!
 
 Cheers,  
