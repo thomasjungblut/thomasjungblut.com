@@ -23,9 +23,6 @@ const Bio = () => {
             name
             summary
           }
-          social {
-            twitter
-          }
         }
       }
     }
@@ -52,7 +49,6 @@ const Bio = () => {
           <p>
             {author?.summary || null}
           </p>
-          <div className="twitter-container"></div>
         </div>
       )}
     </div>
