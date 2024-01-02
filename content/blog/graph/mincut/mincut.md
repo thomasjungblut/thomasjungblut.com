@@ -42,7 +42,7 @@ We'll dive into the exact algorithm below, but I wanted to give a bit of insight
 Stoer-Wagner is basically the same in reverse: we're taking the full graph and starting at any vertex and doing a `maximum adjacency search` which results in finding two vertices `s` and `t`. Those are the last two vertices we found during the search - don't worry we'll explain the search in detail below.  
 `s` and `t` are then merged into one vertex, effectively `t` will be removed from the graph and its edges will then transfer to `s` (summing the weights in case both pointed to the same vertex). `t` is kept as part of our first partition and we keep track of the `cut weight` of `t`.
 
-Now doing this dance recursively, we find ourself growing our partition (all the `t`'s gathered so far) and a shrinking graph (as we're constantly removing `t`'s). Inevitably we end up with a graph that only has two vertices and this is where we stop the algorithm. While we're doing this, we keep track of the partitions that had the smallest `cut weight` so far. This smallest `cut weight` set of `t`'s at the end is our first partition and the remainder of the vertices in that graph is our second partition. 
+Now doing this dance recursively, we find ourself growing our partition (all the `t`'s gathered so far) and a shrinking graph (as we're constantly removing `t`'s). Inevitably we end up with a graph that only has two vertices, which we are merging into one and this is where we stop the algorithm. While we're doing this, we keep track of the partitions that had the smallest `cut weight` so far. This smallest `cut weight` set of `t`'s at the end is our first partition and the remainder of the vertices in that graph is our second partition. 
 
 Voilá, you cut the graph in half with minimal weights between. 
 
@@ -194,7 +194,7 @@ while (g.getNumVertices() > 1) {
 // currentBestPartition now contains our first partition.
 ```
 
-Similar to the pseudo-code, we try to find the best `cut of the phase` and merge the graph until it only contains two vertices.
+Similar to the pseudo-code, we try to find the best `cut of the phase` and merge the graph until we converge on a single merged vertex.
 
 As you can see, `mergeVerticesFromCut` is not defined and I leave it up to you to implement as homework. I want to leave a couple of pictures from the paper however as they explain pretty well what needs to be done. Let's take the output from the Maximum Adjacency Search above:
 
