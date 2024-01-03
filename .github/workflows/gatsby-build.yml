@@ -1,0 +1,17 @@
+name: gatsby-build
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install libimagequant
+        run: sudo apt-get install libimagequant-dev
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          skip-publish: true
+          deploy-branch: gh-pages-test
+          
