@@ -7,7 +7,7 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// Define the template for blog post
+const blogList = path.resolve('./src/templates/blog-index.js')
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
 /**
@@ -60,6 +60,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+  // Create blog post list pages
+  const postsPerPage = 5;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/` : `/page/${i}`,
+      component: blogList,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i
+      },
+    });
+  });
 }
 
 /**
