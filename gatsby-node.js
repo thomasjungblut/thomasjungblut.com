@@ -1,30 +1,34 @@
+/**
+ * Implement Gatsby's Node APIs in this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
+ */
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+const blogList = path.resolve('./src/templates/blog-index.js')
+const blogPost = path.resolve(`./src/templates/blog-post.js`)
+
+/**
+ * @type {import('gatsby').GatsbyNode['createPages']}
+ */
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-
   // Get all markdown blog posts sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
+  const result = await graphql(`
+    {
+      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+        nodes {
+          id
+          fields {
+            slug
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   if (result.errors) {
     reporter.panicOnBuild(
@@ -64,7 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/` : `/page/${i}`,
-      component: path.resolve('./src/templates/blog-list.js'),
+      component: blogList,
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -73,9 +77,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
-
 }
 
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ */
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -90,6 +96,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+/**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
