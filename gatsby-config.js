@@ -124,7 +124,7 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Coding with Thomas Blog RSS Feed",
           },
         ],
       },
